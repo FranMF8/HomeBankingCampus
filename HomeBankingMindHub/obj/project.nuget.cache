@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xVKdKX7AykPbfI8skfwY1AXG8cJLjH1cQplLf+PAlpPZ8d0N9rDU+NSODVJnP919SycFHZk3Ir/o19WX9GpjwQ==",
+  "dgSpecHash": "F6kD9cVCq4QwZSNrK5mvJhqwYuHGOFH9kqWBS/hotisIUunTmY47s3T6zLzVWJ5OQAkVC+ypyNjA3oEi2HMVJQ==",
   "success": true,
-  "projectFilePath": "D:\\Bootcamp\\HomeBankingMindHub\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
+  "projectFilePath": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cejit\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\cejit\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

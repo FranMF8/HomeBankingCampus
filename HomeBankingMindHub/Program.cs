@@ -8,6 +8,7 @@ builder.Services.AddDbContext<HomeBankingContext>(options => options.UseSqlServe
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddRazorPages();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
@@ -30,8 +31,14 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+app.UseStaticFiles();
+
+app.UseRouting();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapRazorPages();
 
 app.Run();

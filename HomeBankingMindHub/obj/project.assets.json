@@ -7793,11 +7793,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bootcamp\\HomeBankingMindHub\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
+      "projectUniqueName": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
       "projectName": "HomeBankingMindHub",
-      "projectPath": "D:\\Bootcamp\\HomeBankingMindHub\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
+      "projectPath": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
       "packagesPath": "C:\\Users\\cejit\\.nuget\\packages\\",
-      "outputPath": "D:\\Bootcamp\\HomeBankingMindHub\\HomeBankingMindHub\\obj\\",
+      "outputPath": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cejit\\AppData\\Roaming\\NuGet\\NuGet.Config",
