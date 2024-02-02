@@ -9,7 +9,7 @@ namespace HomeBankingMindHub.Models
         public DateTime CreatedDate { get; set; }
         public double Balance { get; set; }
 
-        [ForeignKey("ClientId")]
-        public virtual Client Client { get; set; }
+        public Client Client { get; set; }
+        public long ClientId { get; set; }
     }
 }

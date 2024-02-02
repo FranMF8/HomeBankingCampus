@@ -5,27 +5,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<HomeBankingContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HomeBankingConexion")));
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
 builder.Services.AddRazorPages();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-
     var services = scope.ServiceProvider;
-    try
-    {
-
+    try {
         var context = services.GetRequiredService<HomeBankingContext>();
         DBInitializer.Initialize(context);
     }
-    catch (Exception ex)
-    {
+    catch (Exception ex) {
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "Ha ocurrido un error al enviar la información a la base de datos!");
     }
