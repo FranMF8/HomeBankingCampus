@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeBankingMindHub.Repositories.Classes
 {
-    public abstract class ClientRepository : RepositoryBase<Client>, IClientRepository
+    public class ClientRepository : RepositoryBase<Client>, IClientRepository
     {
         public ClientRepository(HomeBankingContext repositoryContext) : base(repositoryContext)
         {

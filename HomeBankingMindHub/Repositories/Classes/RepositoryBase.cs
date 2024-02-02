@@ -6,7 +6,7 @@ using HomeBankingMindHub.Repositories.Interfaces;
 
 namespace HomeBankingMindHub.Repositories.Classes
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected HomeBankingContext RepositoryContext { get; set; }
 
