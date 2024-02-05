@@ -14,10 +14,7 @@ namespace HomeBankingMindHub.Models
                     new Client { Email = "vcoronado@gmail.com", FirstName="Victor", LastName="Coronado", Password="123456"}
                 };
 
-                context.Clients.AddRange(clients);
-
-                //guardamos
-                context.SaveChanges();
+                
             }
 
         }

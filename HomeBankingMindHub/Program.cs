@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -37,6 +39,12 @@ using (var scope = app.Services.CreateScope())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseAuthorization();
 
