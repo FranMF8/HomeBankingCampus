@@ -1,8 +1,9 @@
-﻿using HomeBankingMindHub.Models.DTOS;
-using HomeBankingMindHub.Models;
+﻿using HomeBankingMindHub.Models;
 using HomeBankingMindHub.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using HomeBankingMindHub.DTOS;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -94,6 +95,32 @@ namespace HomeBankingMindHub.Controllers
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Add([FromBody] ClientDTO model)
+        {
+            if (model.Email.IsNullOrEmpty() || model.FirstName.IsNullOrEmpty() || model.LastName.IsNullOrEmpty())
+            {
+                return BadRequest("Se requieren todos los campos");
+            }
+
+            try
+            {
+                var client = new Client();
+
+                client.Email = model.Email;
+                client.FirstName = model.FirstName;
+                client.LastName = model.LastName;
+                client.Password = "123456";
+                _clientRepository.Save(client);
+
+                return Created();
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error: " + e);
             }
         }
     }

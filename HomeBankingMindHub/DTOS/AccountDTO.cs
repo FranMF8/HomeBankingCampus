@@ -1,4 +1,4 @@
-﻿namespace HomeBankingMindHub.Models.DTOS
+﻿namespace HomeBankingMindHub.DTOS
 {
     public class AccountDTO
     {
