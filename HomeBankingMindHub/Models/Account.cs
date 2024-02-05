@@ -9,6 +9,7 @@ namespace HomeBankingMindHub.Models
         public DateTime CreatedDate { get; set; }
         public double Balance { get; set; }
 
+        public ICollection<Transaction> Transactions { get; set; }
         public Client Client { get; set; }
         public long ClientId { get; set; }
     }

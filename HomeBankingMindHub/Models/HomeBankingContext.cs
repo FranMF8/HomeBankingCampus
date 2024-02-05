@@ -13,8 +13,10 @@ namespace HomeBankingMindHub.Models
         {
             modelBuilder.Entity<Client>().ToTable("Client");
             modelBuilder.Entity<Account>().ToTable("Accounts");
+            modelBuilder.Entity<Transaction>().ToTable("Transaction");
         }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
     }
 }
