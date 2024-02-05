@@ -30,7 +30,6 @@ namespace HomeBankingMindHub.Controllers
                 foreach (Client client in clients) { 
 
                     var newClientDTO = new ClientDTO
-
                     {
                         Id = client.Id,
                         Email = client.Email,
@@ -122,5 +121,6 @@ namespace HomeBankingMindHub.Controllers
                 return BadRequest("Error: " + e);
             }
         }
+
     }
 }
