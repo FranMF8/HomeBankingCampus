@@ -97,7 +97,7 @@ namespace HomeBankingMindHub.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] ClientDTO model)
+        public IActionResult Add([FromBody] CreateClientDTO model)
         {
             if (model.Email.IsNullOrEmpty() || model.FirstName.IsNullOrEmpty() || model.LastName.IsNullOrEmpty())
             {
