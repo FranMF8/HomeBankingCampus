@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bp2TF2sNySLEJSthAdRLqzruKUthtkAoa+I3v+uQQk4=",
+  "Hash": "FnNPqvOWJdh5pfAh3zhrijn5lWZstOWcHuUron0kNdA=",
   "Source": "HomeBankingMindHub",
   "BasePath": "_content/HomeBankingMindHub",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\style.css.bak",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "css/style.css.bak",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css.bak"
     },
     {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\favicon.ico",
