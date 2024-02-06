@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\accounts.html"
     },
     {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\cards.html",
+      "PackagePath": "staticwebassets\\cards.html"
+    },
+    {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\cards.css",
+      "PackagePath": "staticwebassets\\css\\cards.css"
+    },
+    {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -29,12 +37,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\img\\logo vinotinto.png",
+      "PackagePath": "staticwebassets\\img\\logo vinotinto.png"
+    },
+    {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\account.js",
       "PackagePath": "staticwebassets\\js\\account.js"
     },
     {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\accounts.js",
       "PackagePath": "staticwebassets\\js\\accounts.js"
+    },
+    {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\cards.js",
+      "PackagePath": "staticwebassets\\js\\cards.js"
     },
     {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\site.js",
