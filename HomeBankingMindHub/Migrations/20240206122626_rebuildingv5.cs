@@ -5,7 +5,7 @@
 namespace HomeBankingMindHub.Migrations
 {
     /// <inheritdoc />
-    public partial class reDoDB : Migration
+    public partial class rebuildingv5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

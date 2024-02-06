@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeBankingMindHub.Migrations
 {
     [DbContext(typeof(HomeBankingContext))]
-    [Migration("20240205172035_reDoDB")]
-    partial class reDoDB
+    [Migration("20240206122549_rebuildingv4")]
+    partial class rebuildingv4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace HomeBankingMindHub.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Accounts", (string)null);
+                    b.ToTable("Account", (string)null);
                 });
 
             modelBuilder.Entity("HomeBankingMindHub.Models.Client", b =>

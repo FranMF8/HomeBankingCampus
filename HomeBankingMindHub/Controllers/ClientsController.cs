@@ -47,7 +47,6 @@ namespace HomeBankingMindHub.Controllers
                     };
 
                     clientsDTO.Add(newClientDTO);
-
                 }
 
                 return Ok(clientsDTO);
