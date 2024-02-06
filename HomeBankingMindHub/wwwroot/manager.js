@@ -14,7 +14,6 @@ const app = new Vue({
             .then(function (response) {
                 // handle success
                 app.outPut = response.data;
-                //IMPORTANT
                 app.clients = response.data.$values;
             })
             .catch(function (error) {
