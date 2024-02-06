@@ -32,7 +32,6 @@ namespace HomeBankingMindHub.Models
                         context.Accounts.Add(account);
                     }
                     context.SaveChanges();
-
                 }
             }
                 

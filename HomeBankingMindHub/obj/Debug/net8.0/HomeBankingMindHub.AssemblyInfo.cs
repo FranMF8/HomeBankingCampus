@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HomeBankingMindHub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bd9885d0598222bff3093deca514f9b41f97b4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("HomeBankingMindHub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HomeBankingMindHub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
