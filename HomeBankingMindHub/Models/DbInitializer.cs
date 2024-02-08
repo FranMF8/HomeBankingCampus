@@ -1,4 +1,5 @@
-﻿using HomeBankingMindHub.Handlers.Implementations;
+﻿
+using HomeBankingMindHub.Handlers.Implementations;
 using HomeBankingMindHub.Handlers.Interfaces;
 using System;
 using System.Linq;
@@ -7,10 +8,9 @@ namespace HomeBankingMindHub.Models
 {
     public class DBInitializer
     {
-        static private IEncryptionHandler _encryptionHandler;
+        private static IEncryptionHandler _encryptionHandler = new EncryptionHandler();
         public DBInitializer()
         {
-            _encryptionHandler = new EncryptionHandler();
         }    
        
         public static void Initialize(HomeBankingContext context)
