@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using HomeBankingMindHub.Repositories.Interfaces;
 using HomeBankingMindHub.DTOS;
+using HomeBankingMindHub.Handlers.Interfaces;
+using HomeBankingMindHub.Handlers.Implementations;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -14,9 +16,11 @@ namespace HomeBankingMindHub.Controllers
     public class AuthController : ControllerBase
     {
         private IClientRepository _clientRepository;
+        private IEncryptionHandler _encryptionHandler;
         public AuthController(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
+            _encryptionHandler = new EncryptionHandler();
         }
 
         [HttpPost("login")]
@@ -30,7 +34,7 @@ namespace HomeBankingMindHub.Controllers
                 }
 
                 Client user = _clientRepository.FindByEmail(client.Email);
-                if (user == null || !String.Equals(user.Password, client.Password))
+                if (user == null || _encryptionHandler.ValidatePassword(client.Password, user.Hash, user.Salt))
                     return StatusCode(401, "Credenciales invalidas");
 
                 var claims = new List<Claim>

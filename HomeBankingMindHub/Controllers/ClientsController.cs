@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using HomeBankingMindHub.DTOS;
+using HomeBankingMindHub.Handlers.Interfaces;
+using HomeBankingMindHub.Handlers.Implementations;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -12,10 +14,12 @@ namespace HomeBankingMindHub.Controllers
     public class ClientsController : ControllerBase
     {
         private IClientRepository _clientRepository;
+        private IEncryptionHandler _encryptionHandler;
 
         public ClientsController(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
+            _encryptionHandler = new EncryptionHandler();
         }
 
         [HttpGet]
@@ -220,7 +224,7 @@ namespace HomeBankingMindHub.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Client client)
+        public IActionResult Post([FromBody] RegisterClientDTO client)
         {
             try
             {
@@ -236,10 +240,13 @@ namespace HomeBankingMindHub.Controllers
                     return StatusCode(403, "Email está en uso");
                 }
 
+                _encryptionHandler.EncryptPassword(client.Password, out byte[] hash, out byte[] salt);
+
                 Client newClient = new Client
                 {
                     Email = client.Email,
-                    Password = client.Password,
+                    Hash = hash,
+                    Salt = salt,
                     FirstName = client.FirstName,
                     LastName = client.LastName,
                 };

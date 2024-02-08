@@ -1,17 +1,27 @@
-﻿using System;
+﻿using HomeBankingMindHub.Handlers.Implementations;
+using HomeBankingMindHub.Handlers.Interfaces;
+using System;
 using System.Linq;
 
 namespace HomeBankingMindHub.Models
 {
     public class DBInitializer
     {
+        static private IEncryptionHandler _encryptionHandler;
+        public DBInitializer()
+        {
+            _encryptionHandler = new EncryptionHandler();
+        }    
+       
         public static void Initialize(HomeBankingContext context)
         {
             if (!context.Clients.Any())
             {
+                _encryptionHandler.EncryptPassword("123456", out byte[] hash, out byte[] salt);
+
                 var clients = new Client[]
                 {
-                new Client { Email = "vcoronado@gmail.com", FirstName="Victor", LastName="Coronado", Password="123456"}
+                new Client { Email = "vcoronado@gmail.com", FirstName="Victor", LastName="Coronado", Hash = hash, Salt = salt}
                 };
 
                 context.Clients.AddRange(clients);
