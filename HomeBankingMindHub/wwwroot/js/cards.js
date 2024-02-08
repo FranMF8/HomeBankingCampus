@@ -13,6 +13,7 @@
                 .then(function (response) {
                     //get client ifo
                     app.clientInfo = response.data;
+                    console.log(response.data);
                     app.creditCards = app.clientInfo.cards.$values.filter(card => card.type == "CREDIT");
                     app.debitCards = app.clientInfo.cards.$values.filter(card => card.type == "DEBIT");
                 })
@@ -23,7 +24,8 @@
         },
         formatDate: function (date) {
             return new Date(date).toLocaleDateString('en-gb');
-        },signOut: function () {
+        },
+        signOut: function () {
             axios.post('/api/auth/logout')
                 .then(response => window.location.href = "/index.html")
                 .catch(() => {
