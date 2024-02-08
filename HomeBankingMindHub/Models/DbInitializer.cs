@@ -44,11 +44,11 @@ namespace HomeBankingMindHub.Models
                 {
                     var transactions = new Transaction[]
                     {
-                        new Transaction { AccountId= transactionsVictor.Id, Amount = 10000, DateTime = DateTime.Now.AddHours(-5), Description = "Transferencia recibida", Type = TransactionType.CREDIT.ToString() },
+                        new Transaction { AccountId= transactionsVictor.Id, Amount = 10000, DateTime = DateTime.Now.AddHours(-5), Description = "Transferencia recibida", Type = TransactionType.CREDIT },
 
-                        new Transaction { AccountId= transactionsVictor.Id, Amount = -2000, DateTime = DateTime.Now.AddHours(-6), Description = "Compra en tienda mercado libre", Type = TransactionType.DEBIT.ToString() },
+                        new Transaction { AccountId= transactionsVictor.Id, Amount = -2000, DateTime = DateTime.Now.AddHours(-6), Description = "Compra en tienda mercado libre", Type = TransactionType.DEBIT },
 
-                        new Transaction { AccountId= transactionsVictor.Id, Amount = -3000, DateTime = DateTime.Now.AddHours(-7), Description = "Compra en tienda xxxx", Type = TransactionType.DEBIT.ToString() },
+                        new Transaction { AccountId= transactionsVictor.Id, Amount = -3000, DateTime = DateTime.Now.AddHours(-7), Description = "Compra en tienda xxxx", Type = TransactionType.DEBIT },
                     };
 
                     double newBalance = 0;
@@ -148,8 +148,8 @@ namespace HomeBankingMindHub.Models
                         new Card {
                             ClientId= client1.Id,
                             CardHolder = client1.FirstName + " " + client1.LastName,
-                            Type = CardType.DEBIT.ToString(),
-                            Color = CardColor.GOLD.ToString(),
+                            Type = CardType.DEBIT,
+                            Color = CardColor.GOLD,
                             Number = "3325-6745-7876-4445",
                             Cvv = 990,
                             FromDate= DateTime.Now,
@@ -158,8 +158,8 @@ namespace HomeBankingMindHub.Models
                         new Card {
                             ClientId= client1.Id,
                             CardHolder = client1.FirstName + " " + client1.LastName,
-                            Type = CardType.CREDIT.ToString(),
-                            Color = CardColor.TITANIUM.ToString(),
+                            Type = CardType.CREDIT,
+                            Color = CardColor.TITANIUM,
                             Number = "2234-6745-552-7888",
                             Cvv = 750,
                             FromDate= DateTime.Now,
