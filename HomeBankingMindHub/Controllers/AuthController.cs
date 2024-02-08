@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using HomeBankingMindHub.Repositories.Interfaces;
+using HomeBankingMindHub.DTOS;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -19,13 +20,18 @@ namespace HomeBankingMindHub.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] Client client)
+        public async Task<IActionResult> Login([FromBody] LoginClientDTO client)
         {
             try
             {
+                if ( (client.Email == null || client.Email == string.Empty) || (client.Password == null || client.Password == string.Empty))
+                {
+                    return StatusCode(401, "Campos vacios");
+                }
+
                 Client user = _clientRepository.FindByEmail(client.Email);
                 if (user == null || !String.Equals(user.Password, client.Password))
-                    return Unauthorized();
+                    return StatusCode(401, "Credenciales invalidas");
 
                 var claims = new List<Claim>
                 {
