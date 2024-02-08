@@ -133,8 +133,8 @@ namespace HomeBankingMindHub.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult Add([FromBody] CreateClientDTO model)
+        //[HttpPost]
+        /*public IActionResult Add([FromBody] CreateClientDTO model)
         {
             if (model.Email.IsNullOrEmpty() || model.FirstName.IsNullOrEmpty() || model.LastName.IsNullOrEmpty())
             {
@@ -157,7 +157,7 @@ namespace HomeBankingMindHub.Controllers
             {
                 return BadRequest("Error: " + e);
             }
-        }
+        }*/
 
         [HttpGet("current")]
         public IActionResult GetCurrent()
