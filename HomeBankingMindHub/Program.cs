@@ -1,6 +1,7 @@
 using HomeBankingMindHub.Models;
 using HomeBankingMindHub.Repositories.Classes;
 using HomeBankingMindHub.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -13,6 +14,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+      .AddCookie(options =>
+      {
+          options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+          options.LoginPath = new PathString("/index.html");
+      });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ClientOnly", policy => policy.RequireClaim("Client"));
+});
 
 builder.Services.AddControllers().AddJsonOptions(x =>
 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
@@ -46,6 +59,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
