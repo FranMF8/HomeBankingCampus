@@ -2,7 +2,7 @@
 {
     public interface IEncryptionHandler
     {
-        string EncryptPassword(string password, out byte[] hash, out byte[] salt);
-        bool ValidatePassword(string password, byte[] salt);
+        void EncryptPassword(string password, out byte[] hash, out byte[] salt);
+        bool ValidatePassword(string password, byte[] hash, byte[] salt);
     }
 }
