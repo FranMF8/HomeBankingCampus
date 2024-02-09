@@ -6,15 +6,17 @@ using System.Linq;
 
 namespace HomeBankingMindHub.Models
 {
-    public class DBInitializer
+    public static class DBInitializer
     {
-        private static IEncryptionHandler _encryptionHandler = new EncryptionHandler();
-        public DBInitializer()
+        private static IEncryptionHandler _encryptionHandler;
+        static DBInitializer()
         {
+            _encryptionHandler = new EncryptionHandler();
         }    
        
         public static void Initialize(HomeBankingContext context)
-        {
+        {           
+
             if (!context.Clients.Any())
             {
                 _encryptionHandler.EncryptPassword("123456", out byte[] hash, out byte[] salt);

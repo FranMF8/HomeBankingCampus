@@ -240,6 +240,7 @@ namespace HomeBankingMindHub.Controllers
                     return StatusCode(403, "Email está en uso");
                 }
 
+
                 _encryptionHandler.EncryptPassword(client.Password, out byte[] hash, out byte[] salt);
 
                 Client newClient = new Client

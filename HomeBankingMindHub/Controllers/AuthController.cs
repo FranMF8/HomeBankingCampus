@@ -35,7 +35,7 @@ namespace HomeBankingMindHub.Controllers
 
                 Client user = _clientRepository.FindByEmail(client.Email);
 
-                if (user == null || !(_encryptionHandler.ValidatePassword(client.Password, user.Hash, user.Salt) ))
+                if (user == null || !( _encryptionHandler.ValidatePassword(client.Password, user.Hash, user.Salt) ))
                     return StatusCode(401, "Credenciales invalidas");
 
                 var claims = new List<Claim>
