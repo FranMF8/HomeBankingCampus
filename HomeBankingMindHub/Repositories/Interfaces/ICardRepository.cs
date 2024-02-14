@@ -1,0 +1,13 @@
+﻿using HomeBankingMindHub.Models;
+
+namespace HomeBankingMindHub.Repositories.Interfaces
+{
+    public interface ICardRepository
+    {
+        IEnumerable<Card> GetAllCards();
+        void Save(Card card);
+        Card FindById(long id);
+        Card FindByNumber(string number);
+        IEnumerable<Card> GetCardsByClient(long clientId);
+    }
+}

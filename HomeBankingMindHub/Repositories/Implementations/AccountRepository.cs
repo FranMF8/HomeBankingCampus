@@ -37,9 +37,7 @@ namespace HomeBankingMindHub.Repositories.Classes
                 var acc = FindByVIN(vin);
 
                 if (acc == null)
-                {
                     condition = false;
-                }
             }
             account.Number = vin;
             Create(account);

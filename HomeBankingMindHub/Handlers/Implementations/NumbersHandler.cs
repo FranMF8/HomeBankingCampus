@@ -11,7 +11,7 @@ namespace HomeBankingMindHub.Handlers.Implementations
         {
             Random rnd = new Random();
 
-            int number = rnd.Next(1,10000000);
+            string number = rnd.Next(1,10000000).ToString("D8");
             string result = "VIN-" + number;
 
             return result;
@@ -33,6 +33,12 @@ namespace HomeBankingMindHub.Handlers.Implementations
             }
 
             return result;
+        }
+
+        public static string GenerateCardCVV()
+        {
+            Random random = new Random();
+            return random.Next(0, 1000).ToString("D3");
         }
     }
 }
