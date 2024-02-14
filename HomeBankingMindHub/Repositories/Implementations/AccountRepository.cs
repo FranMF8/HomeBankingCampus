@@ -32,7 +32,7 @@ namespace HomeBankingMindHub.Repositories.Classes
 
             while (condition)
             {
-                vin = AccountHandler.GenerateVIN();
+                vin = NumbersHandler.GenerateVIN();
 
                 var acc = FindByVIN(vin);
 
