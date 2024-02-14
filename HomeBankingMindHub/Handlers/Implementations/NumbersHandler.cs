@@ -35,10 +35,11 @@ namespace HomeBankingMindHub.Handlers.Implementations
             return result;
         }
 
-        public static string GenerateCardCVV()
+        public static int GenerateCardCVV()
         {
             Random random = new Random();
-            return random.Next(0, 1000).ToString("D3");
+            string result = random.Next(0, 1000).ToString("D3");
+            return int.Parse(result);
         }
     }
 }

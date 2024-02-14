@@ -34,7 +34,6 @@ namespace HomeBankingMindHub.Repositories.Implementations
         public void Save(Card card)
         {
             bool condition = true;
-            string cvv = string.Empty;
             string cardNumber = string.Empty;
 
             while (condition)
@@ -48,6 +47,10 @@ namespace HomeBankingMindHub.Repositories.Implementations
             }
 
             card.Number = cardNumber;
+            card.Cvv = NumbersHandler.GenerateCardCVV();
+
+            Create(card);
+            SaveChanges();
         }
     }
 }
