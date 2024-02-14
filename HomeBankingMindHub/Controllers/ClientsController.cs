@@ -16,12 +16,14 @@ namespace HomeBankingMindHub.Controllers
     {
         private IClientRepository _clientRepository;
         private IAccountRepository _accountRepository;
+        private ICardRepository _cardRepository;
         private IEncryptionHandler _encryptionHandler;
-
-        public ClientsController(IClientRepository clientRepository, IAccountRepository accountRepository)
+        
+        public ClientsController(IClientRepository clientRepository, IAccountRepository accountRepository, ICardRepository cardRepository)
         {
             _clientRepository = clientRepository;
             _accountRepository = accountRepository;
+            _cardRepository = cardRepository;
             _encryptionHandler = new EncryptionHandler();
         }
 
@@ -318,7 +320,50 @@ namespace HomeBankingMindHub.Controllers
         [HttpPost("current/cards")]
         public IActionResult PostCard(CreateCardDTO card)
         {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
+                if (email == string.Empty)
+                    return Forbid();
+
+                var client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                    return NotFound();
+
+                if (client.Cards.Count() >= 6)
+                    return Forbid();
+
+                foreach (var crd in client.Cards)
+                {
+                    if (card.Type == crd.Type.ToString())
+                    {
+                        if (card.Color == crd.Color.ToString())
+                        {
+                            return Forbid();
+                        }
+                    }
+                }
+
+                Card newCard = new Card
+                {
+                    ClientId = client.Id,
+                    CardHolder = client.FirstName + " " + client.LastName,
+                    Type = (CardType)Enum.Parse(typeof(CardType), card.Type, true),
+                    Color = (CardColor)Enum.Parse(typeof(CardColor), card.Color, true),
+                    FromDate = DateTime.Now,
+                    ThruDate = (card.Type == CardType.DEBIT.ToString() ? DateTime.Now.AddYears(5) : DateTime.Now.AddYears(4)),
+                };
+
+                _cardRepository.Save(newCard);
+
+                return StatusCode(201, "Tarjeta creada con exito");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
         }
     }
 }
