@@ -21,6 +21,7 @@ namespace HomeBankingMindHub.Controllers
         public ClientsController(IClientRepository clientRepository, IAccountRepository accountRepository)
         {
             _clientRepository = clientRepository;
+            _accountRepository = accountRepository;
             _encryptionHandler = new EncryptionHandler();
         }
 
@@ -241,14 +242,7 @@ namespace HomeBankingMindHub.Controllers
                 {
                     return StatusCode(403, "Email está en uso");
                 }               
-
-                Account newAccount = new Account
-                {
-                    CreatedDate = DateTime.Now,
-                    Balance = 0,
-                };
                 
-
                 _encryptionHandler.EncryptPassword(client.Password, out byte[] hash, out byte[] salt);
 
                 Client newClient = new Client
@@ -261,7 +255,22 @@ namespace HomeBankingMindHub.Controllers
                 };
 
                 _clientRepository.Save(newClient);
-                return Created("", newClient);
+
+                var dbUser = _clientRepository.FindByEmail(newClient.Email);
+
+                if (user == null)
+                    return StatusCode(400, "Error al crear la cuenta");
+
+                Account account = new Account
+                {
+                    ClientId = dbUser.Id,
+                    CreatedDate = DateTime.Now,
+                    Balance = 0
+                };
+
+                _accountRepository.Save(account);
+
+                return StatusCode(201, "Cuenta creada con exito");
 
             }
             catch (Exception ex)
@@ -273,7 +282,37 @@ namespace HomeBankingMindHub.Controllers
         [HttpPost("current/accounts")]
         public IActionResult Post()
         {
-            return null;
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+
+                if (email == string.Empty)
+                    return Forbid();
+
+                var client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                    return NotFound();
+
+                if (client.Accounts.Count() > 3)
+                    return StatusCode(401, "Limite de cuentas alcanzado");
+
+                Account account = new Account
+                {
+                    ClientId = client.Id,
+                    CreatedDate = DateTime.Now,
+                    Balance = 0
+                };
+
+                _accountRepository.Save(account);
+
+                return StatusCode(201, "Cuenta creada con exito");
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e);
+            }          
         }
 
     }
