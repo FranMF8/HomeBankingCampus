@@ -41,7 +41,7 @@ var app = new Vue({
                 })
                     .then(() => { window.location.href = "/cards.html" })
                     .catch(() => {
-                        this.errorMsg = "Sign up failed, check the information"
+                        this.errorMsg = "Error creating card"
                         this.errorToats.show();
                     })
             }

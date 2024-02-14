@@ -365,5 +365,33 @@ namespace HomeBankingMindHub.Controllers
                 return StatusCode(500, e);
             }
         }
+
+        [HttpGet("current/cards")]
+        public IActionResult GetCards()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+
+                if (email == string.Empty)
+                    return Forbid();
+
+                var client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                    return NotFound();
+
+                var cards = _cardRepository.GetCardsByClient(client.Id);
+
+                if (cards == null)
+                    return NotFound();
+
+                return Ok(cards);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
     }
 }
