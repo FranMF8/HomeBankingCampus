@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using HomeBankingMindHub.DTOS;
 using HomeBankingMindHub.Handlers.Interfaces;
 using HomeBankingMindHub.Handlers.Implementations;
+using HomeBankingMindHub.Repositories.Classes;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -14,9 +15,10 @@ namespace HomeBankingMindHub.Controllers
     public class ClientsController : ControllerBase
     {
         private IClientRepository _clientRepository;
+        private IAccountRepository _accountRepository;
         private IEncryptionHandler _encryptionHandler;
 
-        public ClientsController(IClientRepository clientRepository)
+        public ClientsController(IClientRepository clientRepository, IAccountRepository accountRepository)
         {
             _clientRepository = clientRepository;
             _encryptionHandler = new EncryptionHandler();
@@ -238,8 +240,14 @@ namespace HomeBankingMindHub.Controllers
                 if (user != null)
                 {
                     return StatusCode(403, "Email está en uso");
-                }
+                }               
 
+                Account newAccount = new Account
+                {
+                    CreatedDate = DateTime.Now,
+                    Balance = 0,
+                };
+                
 
                 _encryptionHandler.EncryptPassword(client.Password, out byte[] hash, out byte[] salt);
 
@@ -261,5 +269,12 @@ namespace HomeBankingMindHub.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPost("current/accounts")]
+        public IActionResult Post()
+        {
+            return null;
+        }
+
     }
 }
