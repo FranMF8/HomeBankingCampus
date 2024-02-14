@@ -258,7 +258,7 @@ namespace HomeBankingMindHub.Controllers
 
                 var dbUser = _clientRepository.FindByEmail(newClient.Email);
 
-                if (user == null)
+                if (dbUser == null)
                     return StatusCode(400, "Error al crear la cuenta");
 
                 Account account = new Account

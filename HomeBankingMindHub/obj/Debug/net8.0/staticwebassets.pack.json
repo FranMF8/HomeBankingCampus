@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\cards.html"
     },
     {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\create-cards.html",
+      "PackagePath": "staticwebassets\\create-cards.html"
+    },
+    {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\cards.css",
       "PackagePath": "staticwebassets\\css\\cards.css"
     },
@@ -55,6 +59,10 @@
     {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\cards.js",
       "PackagePath": "staticwebassets\\js\\cards.js"
+    },
+    {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\create-cards.js",
+      "PackagePath": "staticwebassets\\js\\create-cards.js"
     },
     {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\index.js",

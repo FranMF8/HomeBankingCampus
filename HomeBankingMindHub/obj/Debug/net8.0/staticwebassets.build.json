@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pqDUSEzV1kKE/m87qGoozyLrchtOJ0NyLzAmmw2vLUU=",
+  "Hash": "Y3olKIRp8DX3hc4oI1VP0wIaE11rq/5GXrsM9tYuWJI=",
   "Source": "HomeBankingMindHub",
   "BasePath": "_content/HomeBankingMindHub",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\cards.html"
+    },
+    {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\create-cards.html",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "create-cards.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\create-cards.html"
     },
     {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\cards.css",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\cards.js"
+    },
+    {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\create-cards.js",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "js/create-cards.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\create-cards.js"
     },
     {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\index.js",

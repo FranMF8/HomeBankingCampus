@@ -10,7 +10,7 @@ namespace HomeBankingMindHub.Handlers.Implementations
         {
             Random rnd = new Random();
 
-            int number = rnd.Next(1,7);
+            int number = rnd.Next(1,10000000);
             string result = "VIN-" + number;
 
             return result;
