@@ -37,6 +37,7 @@ namespace HomeBankingMindHub.Controllers
                         Transactions = account.Transactions.Select(tr => new TransactionDTO
                         {
                             Id = tr.Id,
+                            Type = tr.Type.ToString(),
                             Description = tr.Description,
                             Date = tr.DateTime,
                             Amount = tr.Amount
