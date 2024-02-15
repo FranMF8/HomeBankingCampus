@@ -50,7 +50,6 @@ namespace HomeBankingMindHub.Repositories.Classes
             .Include(account => account.Transactions)
             .ToList();
         }
-
         public Account FindByVIN(string VIN)
         {
             return FindByCondition(acc => acc.Number == VIN)
