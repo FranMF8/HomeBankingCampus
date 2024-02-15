@@ -7,7 +7,5 @@ namespace HomeBankingMindHub.Repositories.Interfaces
         IEnumerable<Transaction> GetAllTransactions();
         void Save(Transaction card);
         Transaction FindById(long id);
-        Transaction FindByNumber(string number);
-        IEnumerable<Transaction> GetTransactionsByAccount(long accountVIN);
     }
 }
