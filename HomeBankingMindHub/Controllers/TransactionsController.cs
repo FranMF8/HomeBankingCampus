@@ -70,7 +70,7 @@ namespace HomeBankingMindHub.Controllers
                 Transaction creditTransaction = new Transaction
                 {
                     AccountId = destinationAcc.Id,
-                    Type = TransactionType.DEBIT,
+                    Type = TransactionType.CREDIT,
                     Amount = transaction.Amount,
                     Description = transaction.Description + " " + originAcc.Number,
                     DateTime = DateTime.Now
