@@ -1,6 +1,8 @@
-﻿using HomeBankingMindHub.Repositories.Interfaces;
+﻿using HomeBankingMindHub.DTOS;
+using HomeBankingMindHub.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -15,15 +17,22 @@ namespace HomeBankingMindHub.Controllers
         }
 
         [HttpPost]
-        public IActionResult MakeTransaction()
+        public IActionResult MakeTransaction(MakeTransactionDTO transaction)
         {
             try
             {
+                if (transaction.Amount == 0 || transaction.Description.IsNullOrEmpty() || transaction.FromAccountNumber.IsNullOrEmpty() || transaction.ToAccountNumber.IsNullOrEmpty())
+                    return StatusCode(403, "Campos vacios");
+
+                if (transaction.FromAccountNumber == transaction.ToAccountNumber)
+                    return StatusCode(403, "Las cuentas de origen y destino son identicas");
+
+
                 return StatusCode(201, "Transaccion realizada");
             }
             catch (Exception e)
             {
-                StatusCode(500, e);
+                return StatusCode(500, e);
             }
         }
     }
