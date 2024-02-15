@@ -7,7 +7,7 @@ namespace HomeBankingMindHub.Repositories.Implementations
 {
     public class TransactionRepository : RepositoryBase<Transaction>, ITransactionRepository
     {
-        TransactionRepository(HomeBankingContext repositoryContext) : base(repositoryContext)
+        public TransactionRepository(HomeBankingContext repositoryContext) : base(repositoryContext)
         {
 
         }

@@ -366,6 +366,43 @@ namespace HomeBankingMindHub.Controllers
             }
         }
 
+        [HttpGet("current/accounts")]  
+        public IActionResult GetAccounts()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+
+                if (email == string.Empty)
+                    return StatusCode(403, "Error en la autenticacion");
+
+                var client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                    return NotFound();
+
+                List<AccountDTO> result = new List<AccountDTO>();
+
+                foreach (var account in client.Accounts)
+                {
+                    AccountDTO acc = new AccountDTO
+                    {
+                        Id = account.Id,
+                        Number = account.Number,
+                        CreationDate = account.CreatedDate,
+                        Balance = account.Balance
+                    };
+                    result.Add(acc);
+                }
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
+
         [HttpGet("current/cards")]
         public IActionResult GetCards()
         {

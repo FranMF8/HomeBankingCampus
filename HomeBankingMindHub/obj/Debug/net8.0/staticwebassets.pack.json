@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\css\\cards.css"
     },
     {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\cards.css.bak",
+      "PackagePath": "staticwebassets\\css\\cards.css.bak"
+    },
+    {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
@@ -69,12 +73,20 @@
       "PackagePath": "staticwebassets\\js\\index.js"
     },
     {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\transfers.js",
+      "PackagePath": "staticwebassets\\js\\transfers.js"
+    },
+    {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\manager.html",
       "PackagePath": "staticwebassets\\manager.html"
     },
     {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\manager.js",
       "PackagePath": "staticwebassets\\manager.js"
+    },
+    {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\transfers.html",
+      "PackagePath": "staticwebassets\\transfers.html"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HomeBankingMindHub.Microsoft.AspNetCore.StaticWebAssets.props",

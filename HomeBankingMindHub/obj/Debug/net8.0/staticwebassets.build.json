@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y3olKIRp8DX3hc4oI1VP0wIaE11rq/5GXrsM9tYuWJI=",
+  "Hash": "eDQOZyg2dr7jJlfkmXNsVk0vgqb4m3OJ/DUzYW+Ntus=",
   "Source": "HomeBankingMindHub",
   "BasePath": "_content/HomeBankingMindHub",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\cards.css"
+    },
+    {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\cards.css.bak",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "css/cards.css.bak",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\cards.css.bak"
     },
     {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\css\\style.css",
@@ -359,6 +378,25 @@
       "OriginalItemSpec": "wwwroot\\js\\index.js"
     },
     {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\transfers.js",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "js/transfers.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\transfers.js"
+    },
+    {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\manager.html",
       "SourceId": "HomeBankingMindHub",
       "SourceType": "Discovered",
@@ -395,6 +433,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manager.js"
+    },
+    {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\transfers.html",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "transfers.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\transfers.html"
     }
   ]
 }
