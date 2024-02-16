@@ -2,9 +2,8 @@
 
 namespace HomeBankingMindHub.Repositories.Interfaces
 {
-    public interface ILoanRepository
+    public interface IClientLoanRepository
     {
-        IEnumerable<Loan> GetAll();
-        Loan FindById(long id);
+        void Save(ClientLoan loan);
     }
 }
