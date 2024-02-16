@@ -36,8 +36,8 @@ namespace HomeBankingMindHub.Controllers
                 if (client == null)
                     return NotFound();
 
-                if (transaction.Amount == 0 || transaction.Description.IsNullOrEmpty() || transaction.FromAccountNumber.IsNullOrEmpty() || transaction.ToAccountNumber.IsNullOrEmpty())
-                    return StatusCode(403, "Campos vacios");
+                if (transaction.Amount <= 0 || transaction.Description.IsNullOrEmpty() || transaction.FromAccountNumber.IsNullOrEmpty() || transaction.ToAccountNumber.IsNullOrEmpty())
+                    return StatusCode(403, "Campos invalidos");
 
                 if (transaction.FromAccountNumber == transaction.ToAccountNumber)
                     return StatusCode(403, "Las cuentas de origen y destino son identicas");

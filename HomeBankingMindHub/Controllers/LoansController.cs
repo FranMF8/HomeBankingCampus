@@ -32,6 +32,7 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
+
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
                 if (email == string.Empty)
@@ -48,7 +49,7 @@ namespace HomeBankingMindHub.Controllers
                 var dbLoan = _loanRepository.FindById(loan.LoanId);
 
                 if(dbLoan == null)
-                    return StatusCode(403, "Datos invalidos");
+                    return StatusCode(403, "Datos  ");
 
                 if (dbLoan.MaxAmount < loan.Amount)
                     return StatusCode(403, "Limite alcanzado");
