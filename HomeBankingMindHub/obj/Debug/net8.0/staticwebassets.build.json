@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eDQOZyg2dr7jJlfkmXNsVk0vgqb4m3OJ/DUzYW+Ntus=",
+  "Hash": "rXkjRBj9Nc8gGbV76CX9QvKVuTG1vgFlrMJuMVQE0x4=",
   "Source": "HomeBankingMindHub",
   "BasePath": "_content/HomeBankingMindHub",
   "Mode": "Default",
@@ -378,6 +378,25 @@
       "OriginalItemSpec": "wwwroot\\js\\index.js"
     },
     {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\loan-application.js",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "js/loan-application.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\loan-application.js"
+    },
+    {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\transfers.js",
       "SourceId": "HomeBankingMindHub",
       "SourceType": "Discovered",
@@ -395,6 +414,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\transfers.js"
+    },
+    {
+      "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\loan-application.html",
+      "SourceId": "HomeBankingMindHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\",
+      "BasePath": "_content/HomeBankingMindHub",
+      "RelativePath": "loan-application.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\loan-application.html"
     },
     {
       "Identity": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\manager.html",

@@ -73,8 +73,16 @@
       "PackagePath": "staticwebassets\\js\\index.js"
     },
     {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\loan-application.js",
+      "PackagePath": "staticwebassets\\js\\loan-application.js"
+    },
+    {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\js\\transfers.js",
       "PackagePath": "staticwebassets\\js\\transfers.js"
+    },
+    {
+      "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\loan-application.html",
+      "PackagePath": "staticwebassets\\loan-application.html"
     },
     {
       "Id": "C:\\Users\\cejit\\OneDrive\\Documentos\\GitHub\\HomeBankingCampus\\HomeBankingMindHub\\wwwroot\\manager.html",

@@ -530,3 +530,5 @@ FodyWeavers.xsd
 HomeBankingMindHub/obj/Debug/net8.0/HomeBankingMindHub.AssemblyInfo.cs
 HomeBankingMindHub/obj/Debug/net8.0/HomeBankingMindHub.AssemblyInfoInputs.cache
 .vs/HomeBankingMindHub/v17/.suo
+.vs/HomeBankingMindHub/v17/.suo
+*.v2
