@@ -46,7 +46,7 @@ namespace HomeBankingMindHub.Controllers
                 var dbLoan = _loanRepository.FindById(loan.LoanId);
 
                 if (dbLoan == null)
-                    return StatusCode(403, "Datos  ");
+                    return StatusCode(403, "Credito invalido");
 
                 var paymentsCondition = dbLoan.Payments.Split(",").Contains(loan.Payments);
 
