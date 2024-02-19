@@ -11,7 +11,7 @@ namespace HomeBankingMindHub.Handlers.Implementations
         {
             Random rnd = new Random();
 
-            string number = rnd.Next(1,10000000).ToString("D8");
+            string number = rnd.Next(1,100000000).ToString("D8");
             string result = "VIN-" + number;
 
             return result;

@@ -32,7 +32,6 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
                 if (email == string.Empty)
