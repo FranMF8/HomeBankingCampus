@@ -43,13 +43,15 @@ namespace HomeBankingMindHub.Controllers
                 if (client == null)
                     return NotFound();
 
-                if (loan.LoanId == 0 || loan.Amount <= 0 || loan.Payments.IsNullOrEmpty() || int.Parse(loan.Payments) <= 0 || loan.ToAccountNumber.IsNullOrEmpty())
-                    return StatusCode(403, "Datos invalidos");
-
                 var dbLoan = _loanRepository.FindById(loan.LoanId);
 
-                if(dbLoan == null)
+                if (dbLoan == null)
                     return StatusCode(403, "Datos  ");
+
+                var paymentsCondition = dbLoan.Payments.Split(",").Contains(loan.Payments);
+
+                if (loan.LoanId == 0 || loan.Amount <= 0 || loan.Payments.IsNullOrEmpty() || int.Parse(loan.Payments) <= 0 || loan.ToAccountNumber.IsNullOrEmpty() || !paymentsCondition)
+                    return StatusCode(403, "Datos invalidos");                             
 
                 if (dbLoan.MaxAmount < loan.Amount)
                     return StatusCode(403, "Limite alcanzado");
