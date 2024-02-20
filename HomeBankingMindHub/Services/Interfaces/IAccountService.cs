@@ -5,5 +5,6 @@ namespace HomeBankingMindHub.Services.Interfaces
     public interface IAccountService
     {
         public List<AccountDTO> GetAll();
+        public AccountDTO GetById(long id);
     }
 }

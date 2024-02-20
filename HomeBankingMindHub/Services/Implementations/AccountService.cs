@@ -31,9 +31,16 @@ namespace HomeBankingMindHub.Services.Implementations
             return accountsDTO;
         }
 
-        public AccountDTO GetById(int id)
+        public AccountDTO GetById(long id)
         {
-            throw new NotImplementedException();
+            var account = _accountRepository.FindById(id);
+
+            if (account == null)
+                return null;
+
+            AccountDTO accountDTO = new AccountDTO(account);
+
+            return accountDTO;
         }
     }
 }

@@ -40,31 +40,9 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-                var account = _accountRepository.FindById(id);
+                AccountDTO result = _accountService.GetById(id);
 
-                if (account == null)
-                {
-                    return NotFound();
-                }
-
-                var accountDTO = new AccountDTO()
-                {
-                    Id = account.Id,
-                    Balance = account.Balance,
-                    CreationDate = account.CreatedDate,
-                    Number = account.Number,
-
-                    Transactions = account.Transactions.Select(tr => new TransactionDTO
-                    {
-                        Id = tr.Id,
-                        Type = tr.Type.ToString(),
-                        Description = tr.Description,
-                        Date = tr.DateTime,
-                        Amount = tr.Amount
-                    }).ToList()
-                };
-
-                return Ok(accountDTO);
+                return Ok(result);
             }
             catch (Exception e)
             {
