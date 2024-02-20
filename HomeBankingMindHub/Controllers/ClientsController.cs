@@ -133,24 +133,12 @@ namespace HomeBankingMindHub.Controllers
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
                 if (email == string.Empty)
-                    return Forbid();
+                    return StatusCode(403, "Sesion invalida");
 
-                var client = _clientRepository.FindByEmail(email);
+                string message = _clientService.CreateAccount(email);
 
-                if (client == null)
-                    return NotFound();
-
-                if (client.Accounts.Count() > 3)
-                    return StatusCode(401, "Limite de cuentas alcanzado");
-
-                Account account = new Account
-                {
-                    ClientId = client.Id,
-                    CreatedDate = DateTime.Now,
-                    Balance = 0
-                };
-
-                _accountRepository.Save(account);
+                if (message != "ok")
+                    return StatusCode(403, message);
 
                 return StatusCode(201, "Cuenta creada con exito");
             }

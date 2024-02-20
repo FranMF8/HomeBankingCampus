@@ -23,7 +23,24 @@ namespace HomeBankingMindHub.Services.Implementations
 
         public string CreateAccount(string email)
         {
-            throw new NotImplementedException();
+            var client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return "Email invalido";
+
+            if (client.Accounts.Count() > 3)
+                return "Limite de cuentas alcanzado";
+
+            Account account = new Account
+            {
+                ClientId = client.Id,
+                CreatedDate = DateTime.Now,
+                Balance = 0
+            };
+
+            _accountRepository.Save(account);
+
+            return "ok";
         }
 
         public string CreateCard(string email)
