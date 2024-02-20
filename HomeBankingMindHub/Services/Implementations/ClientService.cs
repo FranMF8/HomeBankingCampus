@@ -71,7 +71,14 @@ namespace HomeBankingMindHub.Services.Implementations
 
         public ClientDTO GetCurrent(string email)
         {
-            throw new NotImplementedException();
+            Client client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return null;
+
+            ClientDTO clientDTO = new ClientDTO(client);
+
+            return clientDTO;         
         }
 
         public string PostClient(RegisterClientDTO client)

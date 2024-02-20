@@ -88,52 +88,14 @@ namespace HomeBankingMindHub.Controllers
             {
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
                 if (email == string.Empty)
-                {
-                    return Forbid();
-                }
+                    return StatusCode(403, "Sesion invalida");
 
-                Client client = _clientRepository.FindByEmail(email);
+                ClientDTO result = _clientService.GetCurrent(email);
 
-                if (client == null)
-                {
-                    return Forbid();
-                }
+                if (result == null)
+                    return StatusCode(404, "Cliente invalido");
 
-                var clientDTO = new ClientDTO
-                {
-                    Id = client.Id,
-                    Email = client.Email,
-                    FirstName = client.FirstName,
-                    LastName = client.LastName,
-                    Accounts = client.Accounts.Select(ac => new AccountDTO
-                    {
-                        Id = ac.Id,
-                        Balance = ac.Balance,
-                        CreationDate = ac.CreatedDate,
-                        Number = ac.Number
-                    }).ToList(),
-                    Credits = client.ClientLoans.Select(cl => new ClientLoanDTO
-                    {
-                        Id = cl.Id,
-                        LoanId = cl.LoanId,
-                        Name = cl.Loan.Name,
-                        Amount = cl.Amount,
-                        Payments = int.Parse(cl.Payments)
-                    }).ToList(),
-                    Cards = client.Cards.Select(c => new CardDTO
-                    {
-                        Id = c.Id,
-                        CardHolder = c.CardHolder,
-                        Color = c.Color.ToString(),
-                        Cvv = c.Cvv,
-                        FromDate = c.FromDate,
-                        Number = c.Number,
-                        ThruDate = c.ThruDate,
-                        Type = c.Type.ToString()
-                    }).ToList()
-                };
-
-                return Ok(clientDTO);
+                return Ok(result);
             }
             catch (Exception ex)
             {
