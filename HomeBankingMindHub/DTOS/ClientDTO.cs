@@ -31,13 +31,14 @@ namespace HomeBankingMindHub.DTOS
 
             Accounts = accountsDTO;
 
-            List<ClientLoanDTO> loans = new List<ClientLoanDTO>();
-
-            foreach (var loan in client.ClientLoans)
+            List<CardDTO> cards = new List<CardDTO>();
+            foreach (var card in client.Cards)
             {
-                ClientLoanDTO loanDTO = new ClientLoanDTO(loan);
-                loans.Add(loanDTO);
+                CardDTO cardDTO = new CardDTO(card);
+                cards.Add(cardDTO);
             }
+
+            Cards = cards;
         }
     }
 }
