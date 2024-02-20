@@ -83,7 +83,41 @@ namespace HomeBankingMindHub.Services.Implementations
 
         public string PostClient(RegisterClientDTO client)
         {
-            throw new NotImplementedException();
+            Client user = _clientRepository.FindByEmail(client.Email);
+
+            if (user != null)
+            {
+                return "Email en uso";
+            }
+
+            _encryptionHandler.EncryptPassword(client.Password, out byte[] hash, out byte[] salt);
+
+            Client newClient = new Client
+            {
+                Email = client.Email,
+                Hash = hash,
+                Salt = salt,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+            };
+
+            _clientRepository.Save(newClient);
+
+            var dbUser = _clientRepository.FindByEmail(newClient.Email);
+
+            if (dbUser == null)
+                return "Error al crear la cuenta";
+
+            Account account = new Account
+            {
+                ClientId = dbUser.Id,
+                CreatedDate = DateTime.Now,
+                Balance = 0
+            };
+
+            _accountRepository.Save(account);
+
+            return "ok";
         }
     }
 }

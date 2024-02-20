@@ -108,43 +108,13 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-                //validamos datos antes
                 if (String.IsNullOrEmpty(client.Email) || String.IsNullOrEmpty(client.Password) || String.IsNullOrEmpty(client.FirstName) || String.IsNullOrEmpty(client.LastName))
                     return StatusCode(403, "datos inválidos");
 
-                Client user = _clientRepository.FindByEmail(client.Email);
+                string message = _clientService.PostClient(client);
 
-                if (user != null)
-                {
-                    return StatusCode(403, "Email está en uso");
-                }               
-                
-                _encryptionHandler.EncryptPassword(client.Password, out byte[] hash, out byte[] salt);
-
-                Client newClient = new Client
-                {
-                    Email = client.Email,
-                    Hash = hash,
-                    Salt = salt,
-                    FirstName = client.FirstName,
-                    LastName = client.LastName,
-                };
-
-                _clientRepository.Save(newClient);
-
-                var dbUser = _clientRepository.FindByEmail(newClient.Email);
-
-                if (dbUser == null)
-                    return StatusCode(400, "Error al crear la cuenta");
-
-                Account account = new Account
-                {
-                    ClientId = dbUser.Id,
-                    CreatedDate = DateTime.Now,
-                    Balance = 0
-                };
-
-                _accountRepository.Save(account);
+                if (message != "ok")
+                    return StatusCode(403, message);
 
                 return StatusCode(201, "Cuenta creada con exito");
 
