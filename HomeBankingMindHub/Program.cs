@@ -2,6 +2,8 @@ using HomeBankingMindHub.Models;
 using HomeBankingMindHub.Repositories.Classes;
 using HomeBankingMindHub.Repositories.Implementations;
 using HomeBankingMindHub.Repositories.Interfaces;
+using HomeBankingMindHub.Services.Implementations;
+using HomeBankingMindHub.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -33,12 +35,16 @@ x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 builder.Services.AddDbContext<HomeBankingContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HomeBankingConexion")));
 
+//Repos Injections
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ICardRepository, CardRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 builder.Services.AddScoped<IClientLoanRepository, ClientLoanRepository>();
+
+//Services Injections
+builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 

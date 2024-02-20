@@ -1,4 +1,5 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿
+using HomeBankingMindHub.Models;
 
 namespace HomeBankingMindHub.DTOS
 {
@@ -9,5 +10,13 @@ namespace HomeBankingMindHub.DTOS
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public double Amount { get; set; }
+
+        public TransactionDTO(Transaction transaction) {
+            Id = transaction.Id;
+            Type = transaction.Type.ToString();
+            Description = transaction.Description;
+            Date = transaction.DateTime;
+            Amount = transaction.Amount;
+        }
     }
 }

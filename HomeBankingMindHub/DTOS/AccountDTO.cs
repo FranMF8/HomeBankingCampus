@@ -1,4 +1,6 @@
-﻿namespace HomeBankingMindHub.DTOS
+﻿using HomeBankingMindHub.Models;
+
+namespace HomeBankingMindHub.DTOS
 {
     public class AccountDTO
     {
@@ -7,5 +9,22 @@
         public DateTime CreationDate { get; set; }
         public double Balance { get; set; }
         public ICollection<TransactionDTO> Transactions { get; set; }
+
+        public AccountDTO(Account account)
+        {
+            Id = account.Id;
+            Number = account.Number;
+            CreationDate = account.CreatedDate;
+            Balance = account.Balance;
+
+            List<TransactionDTO> transactions = new List<TransactionDTO>();
+
+            foreach (var transaction in account.Transactions)
+            {
+                TransactionDTO transactionDTO = new TransactionDTO(transaction);
+                transactions.Add(transactionDTO);
+            }
+            Transactions = transactions;
+        }
     }
 }
