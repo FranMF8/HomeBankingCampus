@@ -18,5 +18,9 @@ namespace HomeBankingMindHub.DTOS
             Date = transaction.DateTime;
             Amount = transaction.Amount;
         }
+        public TransactionDTO()
+        {
+
+        }
     }
 }

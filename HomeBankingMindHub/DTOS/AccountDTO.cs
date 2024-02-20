@@ -1,4 +1,5 @@
 ﻿using HomeBankingMindHub.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HomeBankingMindHub.DTOS
 {
@@ -19,12 +20,20 @@ namespace HomeBankingMindHub.DTOS
 
             List<TransactionDTO> transactions = new List<TransactionDTO>();
 
-            foreach (var transaction in account.Transactions)
+            if (!account.Transactions.IsNullOrEmpty())
             {
-                TransactionDTO transactionDTO = new TransactionDTO(transaction);
-                transactions.Add(transactionDTO);
+                foreach (var transaction in account.Transactions)
+                {
+                    TransactionDTO transactionDTO = new TransactionDTO(transaction);
+                    transactions.Add(transactionDTO);
+                }         
             }
             Transactions = transactions;
+        }
+
+        public AccountDTO()
+        {
+
         }
     }
 }

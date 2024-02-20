@@ -17,7 +17,7 @@ namespace HomeBankingMindHub.Controllers
     public class ClientsController : ControllerBase
     {
         private readonly IClientService _clientService;
-        public ClientsController(ClientService clientService) 
+        public ClientsController(IClientService clientService) 
         {
             _clientService = clientService;
         }
