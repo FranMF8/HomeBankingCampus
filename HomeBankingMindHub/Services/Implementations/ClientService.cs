@@ -43,9 +43,40 @@ namespace HomeBankingMindHub.Services.Implementations
             return "ok";
         }
 
-        public string CreateCard(string email)
+        public string CreateCard(string email, CreateCardDTO card)
         {
-            throw new NotImplementedException();
+            var client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return "Email invalido";
+
+            if (client.Cards.Count() >= 6)
+                return "Limite de tarjetas alcanzado";
+
+            foreach (var crd in client.Cards)
+            {
+                if (card.Type == crd.Type.ToString())
+                {
+                    if (card.Color == crd.Color.ToString())
+                    {
+                        return "Error al crear la tarjeta";
+                    }
+                }
+            }
+
+            Card newCard = new Card
+            {
+                ClientId = client.Id,
+                CardHolder = client.FirstName + " " + client.LastName,
+                Type = (CardType)Enum.Parse(typeof(CardType), card.Type, true),
+                Color = (CardColor)Enum.Parse(typeof(CardColor), card.Color, true),
+                FromDate = DateTime.Now,
+                ThruDate = (card.Type == CardType.DEBIT.ToString() ? DateTime.Now.AddYears(5) : DateTime.Now.AddYears(4)),
+            };
+
+            _cardRepository.Save(newCard);
+
+            return "ok";
         }
 
         public List<ClientDTO> Get()

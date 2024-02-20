@@ -157,38 +157,12 @@ namespace HomeBankingMindHub.Controllers
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
                 if (email == string.Empty)
-                    return Forbid();
+                    return StatusCode(403, "Sesion invalida");
 
-                var client = _clientRepository.FindByEmail(email);
+                string message = _clientService.CreateCard(email, card);
 
-                if (client == null)
-                    return NotFound();
-
-                if (client.Cards.Count() >= 6)
-                    return Forbid();
-
-                foreach (var crd in client.Cards)
-                {
-                    if (card.Type == crd.Type.ToString())
-                    {
-                        if (card.Color == crd.Color.ToString())
-                        {
-                            return Forbid();
-                        }
-                    }
-                }
-
-                Card newCard = new Card
-                {
-                    ClientId = client.Id,
-                    CardHolder = client.FirstName + " " + client.LastName,
-                    Type = (CardType)Enum.Parse(typeof(CardType), card.Type, true),
-                    Color = (CardColor)Enum.Parse(typeof(CardColor), card.Color, true),
-                    FromDate = DateTime.Now,
-                    ThruDate = (card.Type == CardType.DEBIT.ToString() ? DateTime.Now.AddYears(5) : DateTime.Now.AddYears(4)),
-                };
-
-                _cardRepository.Save(newCard);
+                if (message != "ok")
+                    return StatusCode(403, message);
 
                 return StatusCode(201, "Tarjeta creada con exito");
             }

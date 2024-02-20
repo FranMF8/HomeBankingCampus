@@ -9,7 +9,7 @@ namespace HomeBankingMindHub.Services.Interfaces
         public ClientDTO GetCurrent(string email);
         public string PostClient(RegisterClientDTO client);
         public string CreateAccount(string email);
-        public string CreateCard(string email);
+        public string CreateCard(string email, CreateCardDTO card);
         public List<AccountDTO> GetAccounts();
         public List<CardDTO> GetCards();
     }
