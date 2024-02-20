@@ -7,6 +7,8 @@ using HomeBankingMindHub.DTOS;
 using HomeBankingMindHub.Handlers.Interfaces;
 using HomeBankingMindHub.Handlers.Implementations;
 using HomeBankingMindHub.Repositories.Classes;
+using HomeBankingMindHub.Services.Interfaces;
+using HomeBankingMindHub.Services.Implementations;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -14,17 +16,10 @@ namespace HomeBankingMindHub.Controllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
-        private IClientRepository _clientRepository;
-        private IAccountRepository _accountRepository;
-        private ICardRepository _cardRepository;
-        private IEncryptionHandler _encryptionHandler;
-        
-        public ClientsController(IClientRepository clientRepository, IAccountRepository accountRepository, ICardRepository cardRepository)
+        private readonly IClientService _clientService;
+        public ClientsController(ClientService clientService) 
         {
-            _clientRepository = clientRepository;
-            _accountRepository = accountRepository;
-            _cardRepository = cardRepository;
-            _encryptionHandler = new EncryptionHandler();
+            _clientService = clientService;
         }
 
         [HttpGet]
@@ -32,52 +27,9 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-                var clients = _clientRepository.GetAllClients();
+                List<ClientDTO> result = _clientService.Get();
 
-                var clientsDTO = new List<ClientDTO>();
-
-                foreach (Client client in clients) { 
-
-                    var newClientDTO = new ClientDTO
-                    {
-                        Id = client.Id,
-                        Email = client.Email,
-                        FirstName = client.FirstName,
-                        LastName = client.LastName,
-
-                        Accounts = client.Accounts.Select(ac => new AccountDTO
-                        {
-                            Id = ac.Id,
-                            Balance = ac.Balance,
-                            CreationDate = ac.CreatedDate,
-                            Number = ac.Number
-
-                        }).ToList(),
-                        Credits = client.ClientLoans.Select(cl => new ClientLoanDTO
-                        {
-                            Id = cl.Id,
-                            LoanId = cl.LoanId,
-                            Name = cl.Loan.Name,
-                            Amount = cl.Amount,
-                            Payments = int.Parse(cl.Payments)
-                        }).ToList(),
-                        Cards = client.Cards.Select(c => new CardDTO
-                        {
-                            Id = c.Id,
-                            CardHolder = c.CardHolder,
-                            Color = c.Color.ToString(),
-                            Cvv = c.Cvv,
-                            FromDate = c.FromDate,
-                            Number = c.Number,
-                            ThruDate = c.ThruDate,
-                            Type = c.Type.ToString()
-                        }).ToList()
-                    };
-
-                    clientsDTO.Add(newClientDTO);
-                }
-
-                return Ok(clientsDTO);
+                return Ok(result);
             }
             catch (Exception e)
             {
