@@ -2,6 +2,7 @@
 using HomeBankingMindHub.Models;
 using HomeBankingMindHub.Repositories.Classes;
 using HomeBankingMindHub.Repositories.Interfaces;
+using HomeBankingMindHub.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -12,19 +13,9 @@ namespace HomeBankingMindHub.Controllers
     [ApiController]
     public class LoansController : ControllerBase
     {
-        private IClientRepository _clientRepository;
-        private ILoanRepository _loanRepository;
-        private IClientLoanRepository _clientLoanRepository;
-        private IAccountRepository _accountRepository;
-        private ITransactionRepository _transactionRepository;
-
-        public LoansController(ILoanRepository loanRepository, IClientLoanRepository clientLoanRepository, IClientRepository clientRepository, IAccountRepository accountRepository, ITransactionRepository transactionRepository)
-        {
-            _loanRepository = loanRepository;
-            _clientLoanRepository = clientLoanRepository;
-            _clientRepository = clientRepository;
-            _accountRepository = accountRepository;
-            _transactionRepository = transactionRepository;
+        private readonly ILoanService _loanService;
+        public LoansController(ILoanService loanService) {
+            _loanService = loanService;
         }
 
         [HttpPost]
@@ -37,55 +28,10 @@ namespace HomeBankingMindHub.Controllers
                 if (email == string.Empty)
                     return StatusCode(403, "Error en la autenticacion");
 
-                var client = _clientRepository.FindByEmail(email);
+                string message = _loanService.ApplicateForLoan(loan, email);
 
-                if (client == null)
-                    return NotFound();
-
-                var dbLoan = _loanRepository.FindById(loan.LoanId);
-
-                if (dbLoan == null)
-                    return StatusCode(403, "Credito invalido");
-
-                var paymentsCondition = dbLoan.Payments.Split(",").Contains(loan.Payments);
-
-                if (loan.LoanId == 0 || loan.Amount <= 0 || loan.Payments.IsNullOrEmpty() || int.Parse(loan.Payments) <= 0 || loan.ToAccountNumber.IsNullOrEmpty() || !paymentsCondition)
-                    return StatusCode(403, "Datos invalidos");                             
-
-                if (dbLoan.MaxAmount < loan.Amount)
-                    return StatusCode(403, "Limite alcanzado");
-
-                var account = _accountRepository.FindByVIN(loan.ToAccountNumber);
-
-                if (account == null)
-                    return StatusCode(403, "Error en la cuenta");
-
-                if (account.ClientId != client.Id)
-                    return StatusCode(403, "La cuenta no pertenece al cliente autenticado");
-
-                ClientLoan clientLoan = new ClientLoan
-                {
-                    Amount = loan.Amount * 1.2,
-                    Payments = loan.Payments,
-                    ClientId = client.Id,
-                    LoanId = loan.LoanId
-                };
-
-                Transaction transaction = new Transaction
-                {
-                    Type = TransactionType.CREDIT,
-                    Amount = loan.Amount,
-                    Description = "Credit",
-                    DateTime = DateTime.Now,
-                    AccountId = account.Id
-                };
-
-                account.Balance += loan.Amount;
-
-                _clientLoanRepository.Save(clientLoan);
-                _transactionRepository.Save(transaction);
-                _accountRepository.Save(account);
-
+                if (message != "ok")
+                    return StatusCode(403, message);
 
                 return StatusCode(200);
             }
