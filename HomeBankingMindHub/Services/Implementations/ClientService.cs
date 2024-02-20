@@ -53,7 +53,15 @@ namespace HomeBankingMindHub.Services.Implementations
 
         public ClientDTO GetById(long id)
         {
-            throw new NotImplementedException();
+            Client client = _clientRepository.FindById(id);
+
+            if (client == null)
+            {
+                return null;
+            }
+
+            ClientDTO clientDTO = new ClientDTO(client);
+            return clientDTO;
         }
 
         public List<CardDTO> GetCards()
