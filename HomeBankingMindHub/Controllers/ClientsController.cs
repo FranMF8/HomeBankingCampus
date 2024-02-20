@@ -180,26 +180,12 @@ namespace HomeBankingMindHub.Controllers
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
                 if (email == string.Empty)
-                    return StatusCode(403, "Error en la autenticacion");
+                    return StatusCode(403, "Sesion invalida");
 
-                var client = _clientRepository.FindByEmail(email);
+                List<AccountDTO> result = _clientService.GetAccounts(email);
 
-                if (client == null)
-                    return NotFound();
-
-                List<AccountDTO> result = new List<AccountDTO>();
-
-                foreach (var account in client.Accounts)
-                {
-                    AccountDTO acc = new AccountDTO
-                    {
-                        Id = account.Id,
-                        Number = account.Number,
-                        CreationDate = account.CreatedDate,
-                        Balance = account.Balance
-                    };
-                    result.Add(acc);
-                }
+                if (result == null)
+                    return StatusCode(404, "Email invalido");
 
                 return Ok(result);
             }

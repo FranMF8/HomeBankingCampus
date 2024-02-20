@@ -94,9 +94,21 @@ namespace HomeBankingMindHub.Services.Implementations
             return clientsDTO;
         }
 
-        public List<AccountDTO> GetAccounts()
+        public List<AccountDTO> GetAccounts(string email)
         {
-            throw new NotImplementedException();
+            Client client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return null;
+
+            List<AccountDTO> result = new List<AccountDTO>();
+
+            foreach (var account in client.Accounts)
+            {
+                AccountDTO acc = new AccountDTO(account);
+                result.Add(acc);
+            }
+            return result;
         }
 
         public ClientDTO GetById(long id)
@@ -112,7 +124,7 @@ namespace HomeBankingMindHub.Services.Implementations
             return clientDTO;
         }
 
-        public List<CardDTO> GetCards()
+        public List<CardDTO> GetCards(string email)
         {
             throw new NotImplementedException();
         }
