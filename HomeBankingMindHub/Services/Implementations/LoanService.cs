@@ -84,9 +84,24 @@ namespace HomeBankingMindHub.Services.Implementations
             return "ok";
         }
 
-        public List<ClientLoanDTO> GetLoans()
+        public List<LoanDTO> GetLoans(string email)
         {
-            throw new NotImplementedException();
+            Client client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return null;
+
+            List<Loan> loans = _loanRepository.GetAll().ToList();
+
+            List<LoanDTO> result = new List<LoanDTO>();
+
+            foreach (var loan in loans)
+            {
+                LoanDTO loanDTO = new LoanDTO(loan);
+                result.Add(loanDTO);
+            }
+
+            return result;
         }
     }
 }

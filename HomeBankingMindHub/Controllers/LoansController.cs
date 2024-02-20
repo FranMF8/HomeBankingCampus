@@ -51,26 +51,7 @@ namespace HomeBankingMindHub.Controllers
                 if (email == string.Empty)
                     return StatusCode(403, "Error en la autenticacion");
 
-                var client = _clientRepository.FindByEmail(email);
-
-                if (client == null)
-                    return NotFound();
-
-                var loans = _loanRepository.GetAll();
-
-                List<LoanDTO> result = new List<LoanDTO>();
-
-                foreach (var loan in loans)
-                {
-                    LoanDTO loanDTO = new LoanDTO
-                    {
-                        Id = loan.Id,
-                        Name = loan.Name,
-                        MaxAmount = loan.MaxAmount,
-                        Payments = loan.Payments
-                    };
-                    result.Add(loanDTO);
-                }
+                List<LoanDTO> result = _loanService.GetLoans(email);
 
                 return Ok(result);
             }
