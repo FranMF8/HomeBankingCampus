@@ -46,6 +46,7 @@ builder.Services.AddScoped<IClientLoanRepository, ClientLoanRepository>();
 //Services Injections
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ILoanService, LoanService>();
 
 var app = builder.Build();
 
