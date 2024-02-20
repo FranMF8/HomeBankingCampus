@@ -1,7 +1,9 @@
 ﻿using HomeBankingMindHub.DTOS;
 using HomeBankingMindHub.Repositories.Interfaces;
+using HomeBankingMindHub.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace HomeBankingMindHub.Controllers
 {
@@ -9,11 +11,11 @@ namespace HomeBankingMindHub.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private IAccountRepository _accountRepository;
+        private IAccountService _accountService;
 
-        public AccountsController(IAccountRepository accountRepository)
+        public AccountsController(IAccountService accountService)
         {
-            _accountRepository = accountRepository;
+            _accountService = accountService;
         }
 
         [HttpGet]
@@ -21,33 +23,9 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-                var accounts = _accountRepository.GetAllAccounts();
+                List<AccountDTO> result = _accountService.GetAll();
 
-                var accountsDTO = new List<AccountDTO>();
-
-                foreach (var account in accounts)
-                {
-                    var newAccountDTO = new AccountDTO()
-                    {
-                        Id = account.Id,
-                        Number = account.Number,
-                        CreationDate = account.CreatedDate,
-                        Balance = account.Balance,
-
-                        Transactions = account.Transactions.Select(tr => new TransactionDTO
-                        {
-                            Id = tr.Id,
-                            Type = tr.Type.ToString(),
-                            Description = tr.Description,
-                            Date = tr.DateTime,
-                            Amount = tr.Amount
-                        }).ToList()
-                    };
-
-                    accountsDTO.Add(newAccountDTO);
-                }
-
-                return Ok(accountsDTO);
+                return Ok(result);
             }
             catch (Exception e)
             {
