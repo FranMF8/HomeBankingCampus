@@ -126,7 +126,25 @@ namespace HomeBankingMindHub.Services.Implementations
 
         public List<CardDTO> GetCards(string email)
         {
-            throw new NotImplementedException();
+            Client client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return null;
+
+            List<Card> cards = _cardRepository.GetCardsByClient(client.Id).ToList();
+
+            if (cards == null)
+                return null;
+
+            List<CardDTO> result = new List<CardDTO>();
+
+            foreach (var card in cards)
+            {
+                CardDTO cardDTO = new CardDTO(card);
+                result.Add(cardDTO);
+            }
+
+            return result;
         }
 
         public ClientDTO GetCurrent(string email)

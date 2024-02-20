@@ -203,19 +203,14 @@ namespace HomeBankingMindHub.Controllers
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
 
                 if (email == string.Empty)
-                    return Forbid();
+                    return StatusCode(403, "Sesion invalida");
 
-                var client = _clientRepository.FindByEmail(email);
+                List<CardDTO> result = _clientService.GetCards(email);
 
-                if (client == null)
-                    return NotFound();
+                if (result == null)
+                    return StatusCode(404, "Error al solicitar las tarjetas");
 
-                var cards = _cardRepository.GetCardsByClient(client.Id);
-
-                if (cards == null)
-                    return NotFound();
-
-                return Ok(cards);
+                return Ok(result);
             }
             catch (Exception e)
             {
