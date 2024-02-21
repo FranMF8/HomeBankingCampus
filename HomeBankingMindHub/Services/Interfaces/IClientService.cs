@@ -12,5 +12,6 @@ namespace HomeBankingMindHub.Services.Interfaces
         public string CreateCard(string email, CreateCardDTO card);
         public List<AccountDTO> GetAccounts(string email);
         public List<CardDTO> GetCards(string email);
+        public string VerifyUser(string email);
     }
 }

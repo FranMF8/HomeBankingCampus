@@ -32,7 +32,17 @@ namespace HomeBankingMindHub.Repositories.Classes
 
         public void Save(Client client)
         {
-            Create(client);
+            var dbClient = FindByEmail(client.Email);
+
+            if (dbClient != null)
+            {
+                Update(client);
+            }
+            else
+            {
+                Create(client);
+            }
+      
             SaveChanges();
         }
 

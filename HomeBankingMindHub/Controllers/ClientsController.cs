@@ -17,9 +17,11 @@ namespace HomeBankingMindHub.Controllers
     public class ClientsController : ControllerBase
     {
         private readonly IClientService _clientService;
-        public ClientsController(IClientService clientService) 
+        private readonly IEmailService _emailService;
+        public ClientsController(IClientService clientService, IEmailService emailService) 
         {
             _clientService = clientService;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -104,12 +106,22 @@ namespace HomeBankingMindHub.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] RegisterClientDTO client)
+        public async Task<IActionResult> PostAsync([FromBody] RegisterClientDTO client)
         {
             try
             {
                 if (String.IsNullOrEmpty(client.Email) || String.IsNullOrEmpty(client.Password) || String.IsNullOrEmpty(client.FirstName) || String.IsNullOrEmpty(client.LastName))
                     return StatusCode(403, "datos inválidos");
+
+                bool emailIsValid = _emailService.ValidateEmail(client.Email);
+
+                if (!emailIsValid)
+                    return StatusCode(403, "Email invalido");
+
+                bool emailSent = await _emailService.SendEmail(client.Email);
+
+                if (!emailSent)
+                    return StatusCode(403, "Error al crear cuenta");
 
                 string message = _clientService.PostClient(client);
 

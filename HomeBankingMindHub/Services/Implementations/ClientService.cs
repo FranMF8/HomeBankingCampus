@@ -177,6 +177,7 @@ namespace HomeBankingMindHub.Services.Implementations
                 Salt = salt,
                 FirstName = client.FirstName,
                 LastName = client.LastName,
+                Verified = false
             };
 
             _clientRepository.Save(newClient);
@@ -194,6 +195,20 @@ namespace HomeBankingMindHub.Services.Implementations
             };
 
             _accountRepository.Save(account);
+
+            return "ok";
+        }
+
+        public string VerifyUser(string email)
+        {
+            Client client = _clientRepository.FindByEmail(email);
+
+            if (client == null)
+                return "Cliente no encontrado";
+
+            client.Verified = true;
+
+            _clientRepository.Save(client);
 
             return "ok";
         }
