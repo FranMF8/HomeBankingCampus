@@ -206,6 +206,9 @@ namespace HomeBankingMindHub.Services.Implementations
             if (client == null)
                 return "Cliente no encontrado";
 
+            if (client.Verified)
+                return "Cliente ya verificado";
+
             client.Verified = true;
 
             _clientRepository.Save(client);

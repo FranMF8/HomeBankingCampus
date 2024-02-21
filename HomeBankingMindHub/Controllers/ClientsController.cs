@@ -229,5 +229,23 @@ namespace HomeBankingMindHub.Controllers
                 return StatusCode(500, e);
             }
         }
+
+        [HttpGet("verify/{email}")]
+        public IActionResult VerifyAccount(string email)
+        {
+            try
+            {
+                string message = _clientService.VerifyUser(email);
+
+                if(message != "ok")
+                    return StatusCode(403, message);
+
+                return Ok("Cuenta verificada");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
     }
 }

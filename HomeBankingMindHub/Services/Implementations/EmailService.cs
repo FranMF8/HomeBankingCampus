@@ -24,7 +24,7 @@ namespace HomeBankingMindHub.Services.Implementations
                     From = new MailAddress(GetConfigValue("OriginEmail")),
                     Subject = "Verificar cuenta Banco Vino Tinto",
                     Body = "<p>Verificar correo</p>" +
-                   $"<p><a href=\"http://localhost:5041/api/client/verify/{email}\">" +
+                   $"<p><a href=\"http://localhost:5041/api/clients/verify/{email}\">" +
                    "<button style=\"padding:10px; background-color: #4CAF50; color: white; border: none;\">Verificar</button></a></p>",
                     IsBodyHtml = true,
                 };
