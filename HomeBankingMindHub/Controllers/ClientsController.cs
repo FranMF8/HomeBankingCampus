@@ -9,9 +9,11 @@ using HomeBankingMindHub.Handlers.Implementations;
 using HomeBankingMindHub.Repositories.Classes;
 using HomeBankingMindHub.Services.Interfaces;
 using HomeBankingMindHub.Services.Implementations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeBankingMindHub.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientsController : ControllerBase

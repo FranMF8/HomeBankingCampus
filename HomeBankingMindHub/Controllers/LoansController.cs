@@ -3,12 +3,14 @@ using HomeBankingMindHub.Models;
 using HomeBankingMindHub.Repositories.Classes;
 using HomeBankingMindHub.Repositories.Interfaces;
 using HomeBankingMindHub.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 namespace HomeBankingMindHub.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class LoansController : ControllerBase

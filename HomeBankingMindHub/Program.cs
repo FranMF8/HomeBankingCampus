@@ -5,7 +5,10 @@ using HomeBankingMindHub.Repositories.Interfaces;
 using HomeBankingMindHub.Services.Implementations;
 using HomeBankingMindHub.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +27,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
           options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
           options.LoginPath = new PathString("/index.html");
       });
+
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuerSigningKey = true,
+//            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
+//            ValidateIssuer = false,
+//            ValidateAudience = false
+//        };
+//    });
 
 builder.Services.AddAuthorization(options =>
 {

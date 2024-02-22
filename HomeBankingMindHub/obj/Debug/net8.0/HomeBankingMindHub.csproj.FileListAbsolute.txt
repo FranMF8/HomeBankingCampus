@@ -508,3 +508,4 @@ C:\Users\cejit\OneDrive\Documentos\GitHub\HomeBankingCampus\HomeBankingMindHub\o
 C:\Users\cejit\OneDrive\Documentos\GitHub\HomeBankingCampus\HomeBankingMindHub\obj\Debug\net8.0\HomeBankingMindHub.pdb
 C:\Users\cejit\OneDrive\Documentos\GitHub\HomeBankingCampus\HomeBankingMindHub\obj\Debug\net8.0\HomeBankingMindHub.genruntimeconfig.cache
 C:\Users\cejit\OneDrive\Documentos\GitHub\HomeBankingCampus\HomeBankingMindHub\obj\Debug\net8.0\ref\HomeBankingMindHub.dll
+C:\Users\cejit\OneDrive\Documentos\GitHub\HomeBankingCampus\HomeBankingMindHub\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

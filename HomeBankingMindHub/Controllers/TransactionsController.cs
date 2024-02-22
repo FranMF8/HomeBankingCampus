@@ -2,12 +2,14 @@
 using HomeBankingMindHub.Models;
 using HomeBankingMindHub.Repositories.Interfaces;
 using HomeBankingMindHub.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 
 namespace HomeBankingMindHub.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TransactionsController : ControllerBase
