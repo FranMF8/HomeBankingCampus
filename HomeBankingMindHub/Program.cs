@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -20,16 +21,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-      .AddCookie(options =>
-      {
-          options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-          options.LoginPath = new PathString("/index.html");
-      });
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = "CookieScheme";
+    options.DefaultChallengeScheme = "CookieScheme";
+}).AddCookie("CookieScheme", options =>
+{
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    options.LoginPath = new PathString("/index.html");
+});
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+    .AddJwtBearer("JwtScheme", options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {

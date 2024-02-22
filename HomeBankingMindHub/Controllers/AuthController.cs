@@ -44,16 +44,16 @@ namespace HomeBankingMindHub.Controllers
 
                 var claims = new List<Claim>
                 {
-                    new Claim("Client", user.Email),
+                    new Claim("Client", user.Email)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(
                     claims,
-                    CookieAuthenticationDefaults.AuthenticationScheme
+                    "CookieScheme"
                     );
 
                 await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    "CookieScheme",
                     new ClaimsPrincipal(claimsIdentity));
 
                 return Ok();
@@ -70,17 +70,15 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-                Console.WriteLine("Mobile cosa");
-                var dbClient = _clientRepository.FindByEmail(client.Email);
+                Client user = _clientRepository.FindByEmail(client.Email);
 
-                if (dbClient == null)
-                    return StatusCode(404, "Email invalido");
+                if (user == null || !(_encryptionHandler.ValidatePassword(client.Password, user.Hash, user.Salt)))
+                    return StatusCode(401, "Credenciales invalidas");
 
                 var claims = new[]
                 {
-                    new Claim(ClaimTypes.Name, dbClient.FirstName),
-                    new Claim(ClaimTypes.Email , client.Email),
-                    new Claim("Client", client.Email)
+                    new Claim("Client", client.Email),
+                    new Claim("AuthType", "JWT")
                 };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("JWT:Key").Value));
@@ -108,7 +106,7 @@ namespace HomeBankingMindHub.Controllers
             try
             {
                 await HttpContext.SignOutAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme);
+                "CookieScheme");
                 return Ok();
             }
             catch (Exception ex)
