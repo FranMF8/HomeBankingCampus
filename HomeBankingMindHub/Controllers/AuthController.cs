@@ -70,6 +70,7 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
+                Console.WriteLine("Mobile cosa");
                 var dbClient = _clientRepository.FindByEmail(client.Email);
 
                 if (dbClient == null)
@@ -78,7 +79,8 @@ namespace HomeBankingMindHub.Controllers
                 var claims = new[]
                 {
                     new Claim(ClaimTypes.Name, dbClient.FirstName),
-                    new Claim(ClaimTypes.Email , client.Email)
+                    new Claim(ClaimTypes.Email , client.Email),
+                    new Claim("Client", client.Email)
                 };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("JWT:Key").Value));

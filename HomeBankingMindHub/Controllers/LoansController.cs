@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace HomeBankingMindHub.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LoansController : ControllerBase

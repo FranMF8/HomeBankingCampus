@@ -10,10 +10,12 @@ using HomeBankingMindHub.Repositories.Classes;
 using HomeBankingMindHub.Services.Interfaces;
 using HomeBankingMindHub.Services.Implementations;
 using Microsoft.AspNetCore.Authorization;
+using NuGet.Common;
+using Microsoft.Identity.Client;
+using System.Security.Claims;
 
 namespace HomeBankingMindHub.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientsController : ControllerBase
@@ -87,6 +89,28 @@ namespace HomeBankingMindHub.Controllers
 
         [HttpGet("current")]
         public IActionResult GetCurrent()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                if (email == string.Empty)
+                    return StatusCode(403, "Sesion invalida");
+
+                ClientDTO result = _clientService.GetCurrent(email);
+
+                if (result == null)
+                    return StatusCode(404, "Cliente invalido");
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [Authorize]
+        [HttpGet("mobile/current")]
+        public IActionResult GetCurrentMobile()
         {
             try
             {
