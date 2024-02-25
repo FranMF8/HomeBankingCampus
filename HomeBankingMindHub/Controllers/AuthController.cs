@@ -28,44 +28,6 @@ namespace HomeBankingMindHub.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginClientDTO client)
-        {
-            try
-            {
-                if ( (client.Email == null || client.Email == string.Empty) || (client.Password == null || client.Password == string.Empty))
-                {
-                    return StatusCode(401, "Campos vacios");
-                }
-
-                Client user = _clientRepository.FindByEmail(client.Email);
-
-                if (user == null || !( _encryptionHandler.ValidatePassword(client.Password, user.Hash, user.Salt) ))
-                    return StatusCode(401, "Credenciales invalidas");
-
-                var claims = new List<Claim>
-                {
-                    new Claim("Client", user.Email)
-                };
-
-                var claimsIdentity = new ClaimsIdentity(
-                    claims,
-                    "CookieScheme"
-                    );
-
-                await HttpContext.SignInAsync(
-                    "CookieScheme",
-                    new ClaimsPrincipal(claimsIdentity));
-
-                return Ok();
-
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpPost("login/mobile")]
         public async Task<ActionResult> LoginJWT([FromBody] LoginClientDTO client)
         {
             try
@@ -92,26 +54,11 @@ namespace HomeBankingMindHub.Controllers
 
                 string token = new JwtSecurityTokenHandler().WriteToken(securityToken);
 
-                return Ok( new { token = token});
+                return Ok( new { token = token });
             }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
-            }
-        }
-
-        [HttpPost("logout")]
-        public async Task<IActionResult> Logout()
-        {
-            try
-            {
-                await HttpContext.SignOutAsync(
-                "CookieScheme");
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
             }
         }
     }

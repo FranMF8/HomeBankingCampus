@@ -23,12 +23,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = "CookieScheme";
-    options.DefaultChallengeScheme = "CookieScheme";
-}).AddCookie("CookieScheme", options =>
-{
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-    options.LoginPath = new PathString("/index.html");
+    options.DefaultAuthenticateScheme = "JwtScheme";
+    options.DefaultChallengeScheme = "JwtScheme";
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

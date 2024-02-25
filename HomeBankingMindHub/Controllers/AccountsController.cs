@@ -13,7 +13,7 @@ namespace HomeBankingMindHub.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private IAccountService _accountService;
+        private readonly IAccountService _accountService;
 
         public AccountsController(IAccountService accountService)
         {

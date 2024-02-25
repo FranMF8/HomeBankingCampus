@@ -93,41 +93,9 @@ namespace HomeBankingMindHub.Controllers
         {
             try
             {
-                string authType = User.FindFirst("AuthType") != null ? User.FindFirst("AuthType").Value : string.Empty;
-
-                Console.WriteLine("AuthType: " + authType);
-
                 string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
                 if (email == string.Empty)
                     return StatusCode(403, "Sesion invalida");
-
-                ClientDTO result = _clientService.GetCurrent(email);
-
-                if (result == null)
-                    return StatusCode(404, "Cliente invalido");
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-        [Authorize]
-        [HttpGet("mobile/current")]
-        public IActionResult GetCurrentMobile()
-        {
-            try
-            {
-                string authType = User.FindFirst("AuthType") != null ? User.FindFirst("AuthType").Value : string.Empty;
-
-                Console.WriteLine("AuthType: " + authType);
-
-                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
-                if (email == string.Empty)
-                    return StatusCode(403, "Sesion invalida");
-
-                
 
                 ClientDTO result = _clientService.GetCurrent(email);
 
